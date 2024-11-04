@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyRoom</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+</head> 
+<body>
+    <div class="header">
+        <h1>StudyRoom</h1>
+        <div class="box">
+            <button class="btnPrimary" onclick="openModal()">Nova Tarefa</button>       
+            <button class="material-symbols-outlined" id="darkMode" onclick="darkMode()">dark_mode</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="column" data-column="1" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)">
+            <div class="head" id="toDo">
+                <span><b>A fazer</b></span>
+            </div>
+            <div class="body">
+                <div class="card_list"></div>
+                <button class="btnAdd" onclick="openModal(1)"><span class="material-symbols-outlined">add</span>Adicionar Item</button>
+            </div>
+        </div>
+        <div class="column" data-column="2" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)">
+            <div class="head" id="doing">
+                <span><b>Em Andamento</b></span>
+            </div>
+            <div class="body">
+                <div class="card_list"></div>
+                <button class="btnAdd" onclick="openModal(2)"><span class="material-symbols-outlined">add</span>Adicionar Item</button>
+            </div>
+        </div>
+        <div class="column" data-column="3" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)">
+            <div class="head" id="done">
+                <span><b>Concluído</b></span>
+            </div>
+            <div class="body">
+                <div class="card_list"></div>
+                <button class="btnAdd" onclick="openModal(3)"><span class="material-symbols-outlined">add</span>Adicionar Item</button>
+            </div>
+        </div>
+    </div>
+    <div id="modal">
+        <div class="box">
+            <div class="head">
+                <span id="createTask">Nova Tarefa</span>
+                <span id="editTask">Editar Tarefa</span>
+                <button class="material-symbols-outlined" onclick="closeModal()">close</button>
+            </div>
+            <div class="form">
+                <input type="hidden" id="idInput">
+
+                <div class="form-group">
+                    <label for="title">Título</label>
+                    <input type="text" id="title">
+                </div>
+                <div class="form-group">
+                    <label for="description">Descrição</label>
+                    <textarea id="description" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="priority">Prioridade</label>
+                    <select id="priority">
+                        <option selected>Baixa</option>
+                        <option>Média</option>
+                        <option>Alta</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="column">Coluna</label>
+                    <select id="column" disabled="disabled">
+                        <option value="1">A Fazer</option>
+                        <option value="2">Em Andamento</option>
+                        <option value="3">Concluído</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="term">Prazo</label>
+                    <input type="date" id="term">
+                </div>
+
+                <div class="form-group">
+                    <label for="responsible">Responsáveis</label>
+                    <textarea id="responsible" rows="3"></textarea>
+                </div>
+                <button class="btnPrimary" onclick="createTask()" id="createBtn">Cadastrar</button>
+                <button class="btnPrimary" onclick="updateTask()" id="editBtn">Salvar Alterações</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="moment.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
